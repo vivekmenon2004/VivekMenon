@@ -18,19 +18,21 @@
 
 <body>
 
-  <!-- ===== CANVAS PARTICLES ===== -->
-  <canvas id="particles-canvas"></canvas>
+  <!-- 1. Add to index.html (inside <body>) -->
+  <canvas id="fluid-canvas"></canvas>
+  <div id="grain-overlay"></div>
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+  <!-- flow-style background is handled by orb-container in css/js -->
 
   <!-- ===== NAV ===== -->
   <nav id="navbar">
     <div class="nav-container">
-      <a class="nav-logo" href="#home"><span class="logo-bracket">&lt;</span>Vivek Menon<span
-          class="logo-bracket">/&gt;</span></a>
       <button class="hamburger" id="hamburger" aria-label="Toggle menu">
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-links" id="nav-links">
-        <li><a href="#home" class="nav-link active" data-section="home">Home</a></li>
+        <li><a href="#home" class="nav-link" data-section="home">Home</a></li>
         <li><a href="#about" class="nav-link" data-section="about">About Me</a></li>
         <li><a href="#education" class="nav-link" data-section="education">Education</a></li>
         <li><a href="#projects" class="nav-link" data-section="projects">Projects</a></li>
@@ -44,7 +46,6 @@
   <!-- ===== HERO ===== -->
   <section id="home" class="hero">
     <div class="hero-content reveal">
-      <p class="hero-greeting">👋 Hello, World! I'm</p>
       <h1 class="hero-name">Vivek Menon</h1>
       <div class="hero-subtitle">
         <span class="static-text">MCA Student &nbsp;|&nbsp; </span>
@@ -107,10 +108,13 @@
               <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg" alt="Figma" />
             </div>
             <div class="app-logo-card glass" title="Affinity Designer">
-              <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/affinity-studio-icon.svg" alt="Affinity" />
+              <img
+                src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/affinity-studio-icon.svg"
+                alt="Affinity" />
             </div>
             <div class="app-logo-card glass" title="Canva">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/canva/canva-original.svg" alt="Canva" />
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/canva/canva-original.svg"
+                alt="Canva" />
             </div>
             <div class="app-logo-card glass" title="Photoshop">
               <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg" alt="Ps" />
@@ -125,9 +129,15 @@
         </div>
         <div class="about-content reveal">
           <h3>MCA Student &amp; Passionate Developer</h3>
-          <p>I am an <strong>MCA student</strong> passionate about software development, UI design, and graphic design, with a strong interest in building creative and impactful digital solutions. I enjoy transforming complex ideas into clean, efficient, and visually appealing applications that provide a great user experience.</p>
-          <p>My interests include <strong>web development, artificial intelligence</strong>, and user interface design, where I combine technical skills with creativity to build meaningful digital products. I believe that technology should not only work well but also look intuitive and engaging for users.</p>
-          <p>I constantly challenge myself to learn new technologies, improve my design thinking, and develop innovative projects. Outside of coding, I enjoy experimenting with new design concepts, exploring emerging tech trends, and working on creative digital ideas that blend technology with visual storytelling.</p>
+          <p>I am an <strong>MCA student</strong> passionate about software development, UI design, and graphic design,
+            with a strong interest in building creative and impactful digital solutions. I enjoy transforming complex
+            ideas into clean, efficient, and visually appealing applications that provide a great user experience.</p>
+          <p>My interests include <strong>web development, artificial intelligence</strong>, and user interface design,
+            where I combine technical skills with creativity to build meaningful digital products. I believe that
+            technology should not only work well but also look intuitive and engaging for users.</p>
+          <p>I constantly challenge myself to learn new technologies, improve my design thinking, and develop innovative
+            projects. Outside of coding, I enjoy experimenting with new design concepts, exploring emerging tech trends,
+            and working on creative digital ideas that blend technology with visual storytelling.</p>
           <div class="skills-wrap">
             <div class="skill-tag">Python</div>
             <div class="skill-tag">Django</div>
@@ -159,8 +169,8 @@
         <h2 class="section-title">Edu<span class="gradient-text">cation</span></h2>
       </div>
       <div class="edu-grid">
-        <a href="https://stantonyscollegepeerumade.ac.in/" target="_blank" class="edu-card glass reveal"
-          style="--bg:url('assets/images/college_bca.png'); display:flex; flex-direction:column; justify-content:flex-end; cursor:pointer;">
+        <a href="https://stantonyscollegepeerumade.ac.in/" target="_blank" class="edu-card glass reveal">
+          <img src="assets/images/college_bca.png" alt="St Antony's College" class="edu-bg-img" />
           <div class="edu-overlay"></div>
           <div class="edu-body">
             <div class="edu-icon"><i class="fa-solid fa-graduation-cap"></i></div>
@@ -170,8 +180,8 @@
             <p class="edu-year"><i class="fa-regular fa-calendar"></i> 2022 - 2025</p>
           </div>
         </a>
-        <a href="https://mariancollege.org/" target="_blank" class="edu-card glass reveal"
-          style="--bg:url('assets/images/college_mca.png'); display:flex; flex-direction:column; justify-content:flex-end; cursor:pointer;">
+        <a href="https://mariancollege.org/" target="_blank" class="edu-card glass reveal">
+          <img src="assets/images/college_mca.png" alt="Marian College" class="edu-bg-img" />
           <div class="edu-overlay"></div>
           <div class="edu-body">
             <div class="edu-icon"><i class="fa-solid fa-graduation-cap"></i></div>
@@ -194,70 +204,51 @@
       </div>
       <div class="projects-grid">
 
-        <div class="project-card glass reveal">
+        <div class="project-card glass reveal" fs-modal-element="open">
           <div class="project-img-wrap">
             <img src="assets/images/turftime.png" alt="TurfTime Screenshot" class="project-img" />
             <div class="project-overlay">
-              <a href="https://github.com/vivekmenon2004/TurfTime" target="_blank" class="project-link-btn"><i
-                  class="fa-brands fa-github"></i>
-                View Code</a>
+              <a href="https://github.com/vivekmenon2004/TurfTime" target="_blank" class="project-link-btn"><i class="fa-solid fa-expand"></i> View Details</a>
             </div>
           </div>
           <div class="project-body">
             <div class="project-tags"><span>Python</span><span>Django</span><span>HTML/CSS</span></div>
             <h3 class="project-title">TurfTime</h3>
             <p class="project-desc">TurfTime is a smart sports turf booking system designed to simplify the process of
-              reserving sports grounds online. The platform allows users to check turf availability, select preferred
-              time slots, and book turfs easily through a digital interface. It helps players avoid scheduling conflicts
-              while enabling turf owners to manage bookings efficiently through an organized system.</p>
-            <a href="https://github.com/vivekmenon2004/TurfTime" target="_blank" class="btn btn-sm"><i
-                class="fa-brands fa-github"></i> GitHub
-              Repo</a>
+              reserving sports grounds online.</p>
+            <a href="https://github.com/vivekmenon2004/TurfTime" target="_blank" class="btn btn-sm"><i class="fa-solid fa-plus"></i> View More</a>
           </div>
         </div>
 
-        <div class="project-card glass reveal">
+        <div class="project-card glass reveal" fs-modal-element="open">
           <div class="project-img-wrap">
-            <img src="assets/images/mediconnect.png" alt="MediConnect Screenshot" class="project-img" />
+            <img src="assets/images/mediconnect.png" alt="Medileaf Screenshot" class="project-img" />
             <div class="project-overlay">
-              <a href="https://github.com/vivekmenon2004/Medileaf" target="_blank" class="project-link-btn"><i
-                  class="fa-brands fa-github"></i>
-                View Code</a>
+              <a href="https://github.com/vivekmenon2004/Medileaf" target="_blank" class="project-link-btn"><i class="fa-solid fa-expand"></i> View Details</a>
             </div>
           </div>
           <div class="project-body">
             <div class="project-tags"><span>Python</span><span>Django</span><span>Web</span></div>
-            <h3 class="project-title">MediConnect</h3>
-            <p class="project-desc">MediConnect is a healthcare management platform that connects patients with doctors
-              through an online appointment booking system. The application allows users to view doctor profiles, check
-              availability, and schedule consultations conveniently. It improves healthcare accessibility by reducing
-              waiting times and streamlining the communication between patients and medical professionals.</p>
-            <a href="https://github.com/vivekmenon2004/Medileaf" target="_blank" class="btn btn-sm"><i
-                class="fa-brands fa-github"></i> GitHub
-              Repo</a>
+            <h3 class="project-title">Medileaf</h3>
+            <p class="project-desc">Medileaf is a healthcare management platform that connects patients with doctors
+              through an online appointment booking system.</p>
+            <a href="https://github.com/vivekmenon2004/Medileaf" target="_blank" class="btn btn-sm"><i class="fa-solid fa-plus"></i> View More</a>
           </div>
         </div>
 
-        <div class="project-card glass reveal">
+        <div class="project-card glass reveal" fs-modal-element="open">
           <div class="project-img-wrap">
             <img src="assets/images/ml_predictor.png" alt="Machine Learning Models Screenshot" class="project-img" />
             <div class="project-overlay">
-              <a href="https://github.com/vivekmenon2004/AI-Predictor-Engine" target="_blank" class="project-link-btn"><i
-                  class="fa-brands fa-github"></i>
-                View Code</a>
+              <a href="https://github.com/vivekmenon2004/AI-Predictor-Engine" target="_blank" class="project-link-btn"><i class="fa-solid fa-expand"></i> View Details</a>
             </div>
           </div>
           <div class="project-body">
             <div class="project-tags"><span>Python</span><span>Scikit-Learn</span><span>ML Algorithms</span></div>
             <h3 class="project-title">Machine Learning Models</h3>
-            <p class="project-desc">The machine learning project involves implementing five algorithms—Linear
-              Regression, Polynomial Regression, Logistic Regression, Decision Tree, and K-Nearest Neighbors—to analyze
-              datasets and make predictions. These models demonstrate different approaches to solving regression and
-              classification problems, helping to understand how machines learn patterns from data and evaluate
-              prediction accuracy.</p>
-            <a href="https://github.com/vivekmenon2004/AI-Predictor-Engine" target="_blank" class="btn btn-sm"><i
-                class="fa-brands fa-github"></i> GitHub
-              Repo</a>
+            <p class="project-desc">This project involves implementing five algorithms to analyze
+              datasets and make predictions across classification problems.</p>
+            <a href="https://github.com/vivekmenon2004/AI-Predictor-Engine" target="_blank" class="btn btn-sm"><i class="fa-solid fa-plus"></i> View More</a>
           </div>
         </div>
 
@@ -324,10 +315,6 @@
         <a href="https://www.ecell.in/nec/" target="_blank" class="achievement-card glass reveal featured"
           style="display:block; cursor:pointer; text-decoration:none;">
           <div class="achievement-glow"></div>
-          <div class="trophy-wrap">
-            <div class="trophy-icon"><i class="fa-solid fa-trophy"></i></div>
-            <div class="trophy-rays"></div>
-          </div>
           <div class="achievement-badge">🥈 First Runner Up</div>
           <h3 class="achievement-title">NEC IIT Bombay 2024</h3>
 
@@ -382,11 +369,12 @@
         </div>
         <div class="contact-form-wrap reveal">
           <!-- Hidden iframe for Google Form submission -->
-          <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(window.submitted){showSuccess();}"></iframe>
-          
-          <form class="contact-form glass" id="contactForm" 
-                action="https://docs.google.com/forms/d/e/1FAIpQLScwlJta_IOm80P8MTc_2q-GDn5yiGEIsHkrAjQitu2GESkh6Q/formResponse" 
-                method="POST" target="hidden_iframe">
+          <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+            onload="if(window.submitted){showSuccess();}"></iframe>
+
+          <form class="contact-form glass" id="contactForm"
+            action="https://docs.google.com/forms/d/e/1FAIpQLScwlJta_IOm80P8MTc_2q-GDn5yiGEIsHkrAjQitu2GESkh6Q/formResponse"
+            method="POST" target="hidden_iframe">
             <div class="form-group">
               <label for="name">Your Name</label>
               <input type="text" id="name" name="entry.1453801150" placeholder="John Doe" required />
@@ -397,8 +385,8 @@
             </div>
             <div class="form-group">
               <label for="message">Message</label>
-              <textarea id="message" name="entry.1055435793" rows="5" placeholder="Tell me about your project or idea..."
-                required></textarea>
+              <textarea id="message" name="entry.1055435793" rows="5"
+                placeholder="Tell me about your project or idea..." required></textarea>
             </div>
             <button type="submit" class="btn btn-primary btn-full" id="sendBtn">
               <i class="fa-solid fa-paper-plane"></i> Send Message
@@ -429,6 +417,29 @@
   </footer>
 
   <script src="script.js"></script>
+
+  <!-- Project Modals Template (Hidden by default) -->
+  <div class="modal_component" fs-modal-element="modal" fs-modal-animation="fade" fs-modal-duration="400"
+    style="display:none;">
+    <div class="modal_overlay" fs-modal-element="close"></div>
+    <div class="modal_content glass reveal">
+      <div class="modal_close-btn" fs-modal-element="close"><i class="fa-solid fa-xmark"></i></div>
+      <div class="modal_body">
+        <div class="modal_image-wrap">
+          <img src="" alt="Project Image" class="modal_image" id="modal-project-img" />
+        </div>
+        <div class="modal_info">
+          <div class="project-tags" id="modal-project-tags"></div>
+          <h2 class="modal_title" id="modal-project-title">Project Name</h2>
+          <p class="modal_desc" id="modal-project-desc">Project description goes here...</p>
+          <div class="modal_btns">
+            <a href="#" target="_blank" class="btn btn-primary" id="modal-project-link"><i
+                class="fa-brands fa-github"></i> View Repository</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>
